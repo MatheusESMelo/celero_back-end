@@ -15,8 +15,24 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from celerochallenge import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('celerochallenge/', include('celerochallenge.urls', namespace='celerochallenge'))
+    #path('', include('celerochallenge.urls', namespace='celerochallenge'))
+    path(
+        "athletes-and-results-list/",
+        views.AthletesAndResultsListViewset.as_view(),
+        name="athletes_and_results_list",
+    ),
+    path(
+        "athletes-and-results-create/",
+        views.AthletesAndResultsCreateViewset.as_view(),
+        name="athletes_and_results_create",
+    ),
+    path(
+        "athletes-and-results-update/<pk_athlete>",
+        views.AthletesAndResultsUpdateViewset.as_view(),
+        name="athletes_and_results_update",
+    ),
 ]

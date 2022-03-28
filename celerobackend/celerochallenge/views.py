@@ -1,7 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from rest_framework import generics
+from .forms import (
+    AthletesAndResultsForm,
+    AthletesAndResultsFilterForm,
+)
 
+from .models import AthletesAndResults
+from .serializers import AthletesAndResultsSerializer
 
 class AthletesAndResultsListViewset(
     LoginRequiredMixin, generics.GenericAPIView
@@ -15,9 +21,16 @@ class AthletesAndResultsListViewset(
 
         # TODO: Escolher os parametros do filtro
 
+        filtro_teste = self.request.GET.get("name")
+
         queryset = queryset.order_by("-pk_athlete")
 
         # TODO: Incluir if e else para os futuros parametros do filtro
+        if not (filtro_teste):
+            queryset = queryset[:10]
+        else:
+            if filtro_teste:
+                queryset = queryset.filter(name__icontains=filtro_teste)
 
         return queryset
 
@@ -27,7 +40,7 @@ class AthletesAndResultsListViewset(
         context = {
             "athletes_and_results_list": athletes_and_results_list,
             # TODO: Adicionar form para o filtro
-            # "filters_form": AthletesAndResultsFilterForm(),
+            "filters_form": AthletesAndResultsFilterForm(),
         }
 
         return render(request, self.template_name, context=context)
