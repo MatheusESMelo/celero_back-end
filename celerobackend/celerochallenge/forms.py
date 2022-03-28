@@ -1,5 +1,5 @@
 from django import forms
-from models import AthletesAndResults
+from .models import AthletesAndResults
 
 class AthletesAndResultsForm(forms.ModelForm):
     class Meta:
