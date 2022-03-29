@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
+from django.urls import reverse, reverse_lazy
 from rest_framework import generics
 from .forms import (
     AthletesAndResultsForm,
@@ -8,9 +9,12 @@ from .forms import (
 
 from .models import AthletesAndResults
 from .serializers import AthletesAndResultsSerializer
+from .mixins import ListModelMixin
+
+
 
 class AthletesAndResultsListViewset(
-    LoginRequiredMixin, generics.GenericAPIView
+    LoginRequiredMixin, ListModelMixin, generics.GenericAPIView
 ):
 
     queryset = AthletesAndResults.objects.filter()
@@ -40,7 +44,7 @@ class AthletesAndResultsListViewset(
         context = {
             "athletes_and_results_list": athletes_and_results_list,
             # TODO: Adicionar form para o filtro
-            "filters_form": AthletesAndResultsFilterForm(),
+            #"filters_form": AthletesAndResultsFilterForm(),
         }
 
         return render(request, self.template_name, context=context)

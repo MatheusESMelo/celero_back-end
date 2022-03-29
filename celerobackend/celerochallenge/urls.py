@@ -3,7 +3,7 @@ from . import views
 
 app_name = "celerochallenge"
 
-urls_patterns = [
+urlpatterns = [
     path(
         "athletes-and-results-list/",
         views.AthletesAndResultsListViewset.as_view(),
