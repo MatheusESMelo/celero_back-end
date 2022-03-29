@@ -18,5 +18,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('celero/', include('celerochallenge.urls', namespace='celerochallenge')),
+    path('celero/', include('celerochallenge.urls')),
 ]

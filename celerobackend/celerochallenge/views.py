@@ -19,7 +19,7 @@ class AthletesAndResultsListViewset(
 
     queryset = AthletesAndResults.objects.filter()
     serializer_class = AthletesAndResultsSerializer
-    template_name = "athletes_and_results.html"
+    template_name = "celero/athletes_and_results_list.html"
 
     def filter_queryset(self, queryset):
 

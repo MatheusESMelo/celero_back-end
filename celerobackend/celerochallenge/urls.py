@@ -1,22 +1,26 @@
 from django.urls import path
-from . import views
+from celerochallenge.views import (
+    AthletesAndResultsListViewset,
+    AthletesAndResultsCreateViewset,
+    AthletesAndResultsUpdateViewset,
+)
 
 app_name = "celerochallenge"
 
 urlpatterns = [
     path(
         "athletes-and-results-list/",
-        views.AthletesAndResultsListViewset.as_view(),
+        AthletesAndResultsListViewset.as_view(),
         name="athletes_and_results_list",
     ),
     path(
         "athletes-and-results-create/",
-        views.AthletesAndResultsCreateViewset.as_view(),
+        AthletesAndResultsCreateViewset.as_view(),
         name="athletes_and_results_create",
     ),
     path(
         "athletes-and-results-update/<pk_athlete>",
-        views.AthletesAndResultsUpdateViewset.as_view(),
+        AthletesAndResultsUpdateViewset.as_view(),
         name="athletes_and_results_update",
     ),
 ]
