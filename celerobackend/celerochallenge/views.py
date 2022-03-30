@@ -25,16 +25,16 @@ class AthletesAndResultsListViewset(
 
         # TODO: Escolher os parametros do filtro
 
-        filtro_teste = self.request.GET.get("name")
+        name = self.request.GET.get("name")
 
         queryset = queryset.order_by("-pk_athlete")
 
         # TODO: Incluir if e else para os futuros parametros do filtro
-        if not (filtro_teste):
+        if not (name):
             queryset = queryset[:10]
         else:
-            if filtro_teste:
-                queryset = queryset.filter(name__icontains=filtro_teste)
+            if name:
+                queryset = queryset.filter(name__icontains=name)
 
         return queryset
 
@@ -44,7 +44,7 @@ class AthletesAndResultsListViewset(
         context = {
             "athletes_and_results_list": athletes_and_results_list,
             # TODO: Adicionar form para o filtro
-            #"filters_form": AthletesAndResultsFilterForm(),
+            "filters_form": AthletesAndResultsFilterForm(),
         }
 
         return render(request, self.template_name, context=context)
@@ -78,7 +78,7 @@ class AthletesAndResultsUpdateViewset(LoginRequiredMixin, generics.GenericAPIVie
 
         context = {"athletes_and_results_form": athletes_and_results_form, "message": ""}
 
-        return render(request, "flux/pessoa_fisica_create_update.html", context=context)
+        return render(request, "celero/athletes_and_results_create_update.html", context=context)
 
     def post(self, request, *args, **kwargs):
         pk_athlete = kwargs.get("pk_athlete")
@@ -105,7 +105,7 @@ class AthletesAndResultsUpdateViewset(LoginRequiredMixin, generics.GenericAPIVie
 
         context = {"athletes_and_results_form": athletes_and_results_form, "message": message}
 
-        return render(request, "athletes_and_results_create_update.html", context=context)
+        return render(request, "celero/athletes_and_results_create_update.html", context=context)
 
 
 class AthletesAndResultsCreateViewset(LoginRequiredMixin, generics.GenericAPIView):
@@ -114,7 +114,7 @@ class AthletesAndResultsCreateViewset(LoginRequiredMixin, generics.GenericAPIVie
 
         context = {"athletes_and_results_form": athletes_and_results_form, "message": ""}
 
-        return render(request, "athletes_and_results_create_update.html", context=context)
+        return render(request, "celero/athletes_and_results_create_update.html", context=context)
 
     def post(self, request, *args, **kwargs):
         message = ""
@@ -129,4 +129,8 @@ class AthletesAndResultsCreateViewset(LoginRequiredMixin, generics.GenericAPIVie
 
         context = {"athletes_and_results_form": athletes_and_results_form, "message": message}
 
-        return render(request, "athletes_and_results_create_update.html", context=context)
+        return render(request, "celero/athletes_and_results_create_update.html", context=context)
+
+
+def main(request):
+    return render(request, "celero/main.html")
