@@ -15,6 +15,7 @@ class AthletesAndResultsForm(forms.ModelForm):
             "noc",
             "games",
             "year",
+            "season",
             "city",
             "sport",
             "event",
@@ -23,5 +24,9 @@ class AthletesAndResultsForm(forms.ModelForm):
 
 
 class AthletesAndResultsFilterForm(forms.Form):
-    # TODO: Escolher parametros do filtro e adicionar no form
-    name = forms.CharField(label="Teste", required=False)
+    name = forms.CharField(label="Name", required=False)
+    sex = forms.CharField(label="Sex", required=False)
+    team = forms.CharField(label="Team", required=False)
+    games = forms.CharField(label="Games", required=False)
+    sport = forms.CharField(label="Sport", required=False)
+    medal = forms.CharField(label="Medal", required=False)

@@ -3,6 +3,7 @@ from rest_framework import serializers
 
 
 class AthletesAndResultsSerializer(serializers.Serializer):
+    pk_athlete = serializers.IntegerField()
     name = serializers.CharField()
     sex = serializers.CharField()
     age = serializers.CharField()
