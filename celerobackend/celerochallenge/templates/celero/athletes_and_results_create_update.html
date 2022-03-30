@@ -4,7 +4,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Titulo</h1>
+    <h1>Cadastro/Atualização de Atleta</h1>
     <form method="post">
         {% csrf_token %}
         {{ athletes_and_results_form|crispy }}
