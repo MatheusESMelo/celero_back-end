@@ -24,4 +24,4 @@ class AthletesAndResultsForm(forms.ModelForm):
 
 class AthletesAndResultsFilterForm(forms.Form):
     # TODO: Escolher parametros do filtro e adicionar no form
-    filtro_teste = forms.CharField(label="Teste", required=False)
+    name = forms.CharField(label="Teste", required=False)

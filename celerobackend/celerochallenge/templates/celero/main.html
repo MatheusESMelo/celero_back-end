@@ -1,0 +1,24 @@
+{% extends 'celero/base.html' %}
+
+{% block title %}Celero{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <br>
+        <br>
+        <br>
+        <br>
+        <a href="/celero/athletes-and-results-list">Lista de Atletas</a>
+        <br>
+    {% else %}
+        <br>
+        <br>
+        Faça login ou cadastre-se para ter acesso ao site
+        <br>
+        <br>
+        <a href="/celero/login">Clique aqui para login</a>
+        <br>
+        <br>
+        <a href="/celero/signup">Clique aqui para se cadastrar</a>
+    {% endif %}
+{% endblock %}

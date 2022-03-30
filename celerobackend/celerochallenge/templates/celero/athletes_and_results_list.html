@@ -1,0 +1,49 @@
+{% extends 'celero/base.html' %}
+
+{% block title %}Celero{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Lista de Atletas</h1>
+<br>
+<br>
+<a href="/celero/athletes-and-results-create"><input class="btn btn-success" type="submit" value="Adicionar Novo Atleta"/></a>
+<br>
+<br>
+Filtros
+<form method="get">
+    {% csrf_token %}
+    {{ filters_form|crispy }}
+    <input class="btn btn-success" type="submit"/>
+    <a href="/celero/athletes-and-results-list">Resetar Filtros</a>
+</form>
+<br>
+<br>
+<table>
+    {% for athletes in athletes_and_results_list %}
+        <tr>
+            <td>--</td>
+        </tr>
+        {% for k, v in athletes.items %}
+            {% if k == 'update_link' %}
+                <tr>
+                    <td><br><a href={{ v }}><button type="button" class="btn btn-secondary">Editar</button></a><br><br></td>
+                </tr>
+            {% else %}
+                    <tr>
+                        <td>{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</table>
+<br>
+<br>
+<br>
+<a href="/">VOLTAR</a>
+<br>
+<br>
+<br>
+{% endblock %}
