@@ -25,7 +25,7 @@
 Utilizando o comando `python manage.py populate_data` será possivel popular a base de dados local, mas o arquivo .csv deverá estar na raiz do
 projeto, com o mesmo nome e header.
 
-###### COMO RODAR TESTES AUTOMATIZADOS
+### COMO RODAR TESTES AUTOMATIZADOS
 
 Para rodar os testes deverá ser utilizado o script `python manage.py test celerochallenge.tests.test_views` para os testes relacionados a views
 e para os testes relacionados ao serializer `python manage.py test celerochallenge.tests.test_serializer`
