@@ -23,18 +23,30 @@ class AthletesAndResultsListViewset(
 
     def filter_queryset(self, queryset):
 
-        # TODO: Escolher os parametros do filtro
-
         name = self.request.GET.get("name")
+        sex = self.request.GET.get("sex")
+        team = self.request.GET.get("team")
+        games = self.request.GET.get("games")
+        sport = self.request.GET.get("sport")
+        medal = self.request.GET.get("medal")
 
         queryset = queryset.order_by("-pk_athlete")
 
-        # TODO: Incluir if e else para os futuros parametros do filtro
-        if not (name):
+        if not (name or sex or team or games or sport or medal):
             queryset = queryset[:10]
         else:
             if name:
                 queryset = queryset.filter(name__icontains=name)
+            if sex:
+                queryset = queryset.filter(sex__icontains=sex)
+            if team:
+                queryset = queryset.filter(team__icontains=team)
+            if games:
+                queryset = queryset.filter(games__icontains=games)
+            if sport:
+                queryset = queryset.filter(sport__icontains=sport)
+            if medal:
+                queryset = queryset.filter(medal__icontains=medal)
 
         return queryset
 
@@ -43,7 +55,6 @@ class AthletesAndResultsListViewset(
 
         context = {
             "athletes_and_results_list": athletes_and_results_list,
-            # TODO: Adicionar form para o filtro
             "filters_form": AthletesAndResultsFilterForm(),
         }
 
