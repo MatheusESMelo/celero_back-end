@@ -20,7 +20,6 @@ class AthletesAndResultsForm(forms.ModelForm):
             "sport",
             "event",
             "medal",
-            "fl_deletado",
         ]
 
 
