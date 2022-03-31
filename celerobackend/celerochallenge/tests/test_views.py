@@ -163,7 +163,6 @@ class TestAthletesAndResultsCreate(TestCase):
             "sport": athletes_and_results.sport,
             "event": athletes_and_results.event,
             "medal": athletes_and_results.medal,
-            "fl_deletado": athletes_and_results.fl_deletado,
         }
 
         self.client.force_login(self.user)
@@ -217,7 +216,6 @@ class TestAthletesAndResultsUpdate(TestCase):
             "sport": self.athletes_and_results.sport,
             "event": self.athletes_and_results.event,
             "medal": self.athletes_and_results.medal,
-            "fl_deletado": self.athletes_and_results.fl_deletado,
         }
 
         self.client.force_login(self.user)
@@ -225,7 +223,7 @@ class TestAthletesAndResultsUpdate(TestCase):
         response = self.client.post(self.url_generated_from_view_name, data=data)
         self.assertIn("atualizados com sucesso", response.context["message"])
 
-        refreshed_athletes_and_results = AthletesAndResults.objects.filter(
+        refreshed_athletes_and_results = AthletesAndResults.objects.get(
             pk_athlete=self.athletes_and_results.pk_athlete
         )
         self.assertEqual(
