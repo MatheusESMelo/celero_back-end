@@ -1,0 +1,6 @@
+Django==3.2.12
+django-allauth==0.50.0
+django-crispy-forms==1.14.0
+djangorestframework==3.13.1
+factory-boy==3.2.1
+Faker==13.3.4
