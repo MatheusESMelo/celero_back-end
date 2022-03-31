@@ -20,3 +20,4 @@ class AthletesAndResults(models.Model):
     sport = models.CharField(max_length=255, blank=False, null=False)
     event = models.CharField(max_length=255, blank=False, null=False)
     medal = models.IntegerField(blank=False, null=False, choices=CHOICES_TP_MEDAL)
+    fl_deletado = models.BooleanField(default=False)

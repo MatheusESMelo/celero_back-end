@@ -17,7 +17,7 @@ class AthletesAndResultsListViewset(
     LoginRequiredMixin, ListModelMixin, generics.GenericAPIView
 ):
 
-    queryset = AthletesAndResults.objects.filter()
+    queryset = AthletesAndResults.objects.filter(fl_deletado=False)
     serializer_class = AthletesAndResultsSerializer
     template_name = "celero/athletes_and_results_list.html"
 
@@ -84,6 +84,7 @@ class AthletesAndResultsUpdateViewset(LoginRequiredMixin, generics.GenericAPIVie
                 "sport": athletes_and_results_data.sport,
                 "event": athletes_and_results_data.event,
                 "medal": athletes_and_results_data.medal,
+                "fl_deletado": athletes_and_results_data.fl_deletado,
             }
         )
 
