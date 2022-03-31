@@ -9,7 +9,7 @@ class AthletesAndResultsFactory(factory.django.DjangoModelFactory):
         model = models.AthletesAndResults
         django_get_or_create = ("pk_athlete",)
 
-    pk_athlete = 1
+    pk_athlete = factory.Faker("pyint")
     
     name = factory.Faker("name")
     sex = factory.Faker("pyint", min_value=1, max_value=2)

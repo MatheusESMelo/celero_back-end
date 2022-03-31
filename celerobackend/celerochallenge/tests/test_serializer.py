@@ -3,7 +3,6 @@ from django.urls import reverse
 
 from celerochallenge.factories import AthletesAndResultsFactory
 from celerochallenge.serializers import AthletesAndResultsSerializer
-from celerobackend.settings import HOST
 from django.contrib.auth.models import User
 
 
